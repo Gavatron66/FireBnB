@@ -14,9 +14,16 @@ namespace Infrastructure.Models
         [Key]
         public int Id { get; set; }
 
-        //Navigation Properties
+        [Required]
+        [Display(Name = "Guest")]
+        public string? GuestId { get; set; }
+
         [ForeignKey("GuestId")]
         public ApplicationUser? ApplicationUser { get; set; }
+
+        [Required]
+        [Display(Name = "Property")]
+        public int PropertyId { get; set; }
 
         [ForeignKey("PropertyId")]
         public Property? Property { get; set; }
@@ -30,16 +37,16 @@ namespace Infrastructure.Models
         [Required]
         public DateTime Checkout { get; set; }
 
-        [Required]
-        public int ServiceFee { get; set; }
+        //[Required]
+        //public int ServiceFee { get; set; }
+
+        //[Required]
+        //public int CleaningFee { get; set; }
 
         [Required]
-        public int CleaningFee { get; set; }
+        public float Tax { get; set; }
 
         [Required]
-        public int Tax { get; set; }
-
-        [Required]
-        public int TotalPrice { get; set; }
+        public float TotalPrice { get; set; }
     }
 }

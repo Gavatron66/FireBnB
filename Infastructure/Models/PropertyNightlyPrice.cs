@@ -13,15 +13,22 @@ namespace Infrastructure.Models
     {
 		[Key]
 		public int Id { get; set; }
-		[Key]
+
+        [Required]
+        [Display(Name = "Property")]
+        public int PropertyId { get; set; }
+
         [ForeignKey("PropertyId")]
         public Property? Property { get; set; }
 
-        [Key]
+        [Required]
+        [Display(Name = "PriceRange")]
+        public int PriceRangeId { get; set; }
+
         [ForeignKey("PriceRangeId")]
         public PriceRange? PriceRange { get; set; }
 
         [Required]
-        public double Rate { get; set; }
+        public float Rate { get; set; }
     }
 }

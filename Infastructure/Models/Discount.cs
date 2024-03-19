@@ -14,7 +14,7 @@ namespace Infrastructure.Models
         public int Id { get; set; }
 
         [Required]
-        public double Value { get; set; }
+        public float Value { get; set; }
 
         [Required]
         public String? Code { get; set; }

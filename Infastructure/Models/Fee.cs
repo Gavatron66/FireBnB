@@ -17,6 +17,6 @@ namespace Infrastructure.Models
         public string? Type { get; set; }
 
         [Required]
-        public double? Price { get; set; }
+        public float? Price { get; set; }
     }
 }
