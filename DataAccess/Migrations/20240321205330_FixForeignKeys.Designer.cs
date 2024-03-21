@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240319232647_FixModels")]
-    partial class FixModels
+    [Migration("20240321205330_FixForeignKeys")]
+    partial class FixForeignKeys
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -289,10 +289,6 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("LastUpdated")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ListerId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("LocationId")
                         .HasColumnType("int");
 
@@ -303,8 +299,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ListerId");
 
                     b.HasIndex("LocationId");
 
@@ -810,12 +804,6 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Infrastructure.Models.Property", b =>
                 {
-                    b.HasOne("Infrastructure.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ListerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Infrastructure.Models.Location", "Location")
                         .WithMany()
                         .HasForeignKey("LocationId")
@@ -833,8 +821,6 @@ namespace DataAccess.Migrations
                         .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("ApplicationUser");
 
                     b.Navigation("Location");
 

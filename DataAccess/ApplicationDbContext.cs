@@ -58,9 +58,7 @@ namespace DataAccess
 		public DbSet<Status> Statuses { get; set; }
 
 
-		//continue adding models
-
-
-	}
+        //continue adding models
+    }
 }
 

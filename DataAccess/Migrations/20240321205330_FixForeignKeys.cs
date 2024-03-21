@@ -5,7 +5,7 @@
 namespace DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class FixModels : Migration
+    public partial class FixForeignKeys : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,16 +31,12 @@ namespace DataAccess.Migrations
                 table: "Properties");
 
             migrationBuilder.DropColumn(
+                name: "ListerId",
+                table: "Properties");
+
+            migrationBuilder.DropColumn(
                 name: "ApplicationUserId",
                 table: "Bookings");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "ListerId",
-                table: "Properties",
-                type: "nvarchar(450)",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "int");
 
             migrationBuilder.AlterColumn<string>(
                 name: "GuestId",
@@ -49,11 +45,6 @@ namespace DataAccess.Migrations
                 nullable: false,
                 oldClrType: typeof(int),
                 oldType: "int");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Properties_ListerId",
-                table: "Properties",
-                column: "ListerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Bookings_GuestId",
@@ -67,14 +58,6 @@ namespace DataAccess.Migrations
                 principalTable: "AspNetUsers",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Properties_AspNetUsers_ListerId",
-                table: "Properties",
-                column: "ListerId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />
@@ -84,31 +67,22 @@ namespace DataAccess.Migrations
                 name: "FK_Bookings_AspNetUsers_GuestId",
                 table: "Bookings");
 
-            migrationBuilder.DropForeignKey(
-                name: "FK_Properties_AspNetUsers_ListerId",
-                table: "Properties");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Properties_ListerId",
-                table: "Properties");
-
             migrationBuilder.DropIndex(
                 name: "IX_Bookings_GuestId",
                 table: "Bookings");
-
-            migrationBuilder.AlterColumn<int>(
-                name: "ListerId",
-                table: "Properties",
-                type: "int",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(450)");
 
             migrationBuilder.AddColumn<string>(
                 name: "ApplicationUserId",
                 table: "Properties",
                 type: "nvarchar(450)",
                 nullable: true);
+
+            migrationBuilder.AddColumn<int>(
+                name: "ListerId",
+                table: "Properties",
+                type: "int",
+                nullable: false,
+                defaultValue: 0);
 
             migrationBuilder.AlterColumn<int>(
                 name: "GuestId",

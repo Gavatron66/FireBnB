@@ -14,12 +14,12 @@ namespace Infrastructure.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        [Display(Name = "Guest")]
+        //[Required]
+        //[Display(Name = "Guest")]
         public string? GuestId { get; set; }
 
-        [ForeignKey("GuestId")]
-        public ApplicationUser? ApplicationUser { get; set; }
+        //[ForeignKey("GuestId")]
+        //public ApplicationUser? ApplicationUser { get; set; }
 
         [Required]
         [Display(Name = "Property")]
