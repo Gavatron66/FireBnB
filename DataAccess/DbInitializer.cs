@@ -156,8 +156,8 @@ namespace DataAccess
 
             var Locations = new List<Location>
             {
-                new Location { CityId = 1, CountyId = 2, StateId = 0, Address = "123 Somewhere St.", Zipcode = "84321"},
-                new Location { CityId = 0, CountyId = 0, StateId = 2, Address = "456 Anywhere Blvd.", Zipcode = "84654"},
+                new Location { CityId = 1, CountyId = 2, StateId = 4, Address = "123 Somewhere St.", Zipcode = "84321"},
+                new Location { CityId = 3, CountyId = 3, StateId = 2, Address = "456 Anywhere Blvd.", Zipcode = "84654"},
                 new Location { CityId = 2, CountyId = 1, StateId = 1, Address = "789 Nowhere Ave.", Zipcode = "84987"}
             };
 
