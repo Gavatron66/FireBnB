@@ -20,6 +20,8 @@ builder.Services.AddScoped<DbInitializer>();
 
 var app = builder.Build();
 
+SeedDatabase();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
