@@ -16,6 +16,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 builder.Services.AddRazorPages();
 
 builder.Services.AddScoped<UnitofWork>();
+builder.Services.AddScoped<DbInitializer>();
 
 var app = builder.Build();
 
@@ -41,3 +42,9 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+
+void SeedDatabase()
+{
+    using var scope = app.Services.CreateScope();
+    var dbInitializer = scope.ServiceProvider.GetRequiredService<DbInitializer>(); dbInitializer.Initialize();
+}
