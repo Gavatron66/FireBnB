@@ -182,9 +182,9 @@ namespace DataAccess
 
             var Properties = new List<Property>
             {
-                new Property {ListerId = _db.ApplicationUsers.First().Id, PropertyTypeId = 2, LocationId = 1, StatusId = 0, Description = "A nice home", LastUpdated = Convert.ToDateTime(DateTime.Now), GuestSharing = false, GuestMax = 16, BedroomNum = 8, BathroomNum = 3 },
-                new Property {ListerId = _db.ApplicationUsers.Last().Id, PropertyTypeId = 1, LocationId = 0, StatusId = 0, Description = "A nice place", LastUpdated = Convert.ToDateTime(DateTime.Now), GuestSharing = true, GuestMax = 4, BedroomNum = 2, BathroomNum = 1 },
-                new Property {ListerId = _db.ApplicationUsers.First().Id, PropertyTypeId = 0, LocationId = 3, StatusId = 1, Description = "A nice area", LastUpdated = Convert.ToDateTime(DateTime.Now), GuestSharing = false, GuestMax = 8, BedroomNum = 4, BathroomNum = 2 }
+                new Property {ListerId = _db.ApplicationUsers.OrderBy(user => user.SignupDate).First().Id, PropertyTypeId = 2, LocationId = 1, StatusId = 2, Description = "A nice home", LastUpdated = Convert.ToDateTime(DateTime.Now), GuestSharing = false, GuestMax = 16, BedroomNum = 8, BathroomNum = 3 },
+                new Property {ListerId = _db.ApplicationUsers.OrderBy(user => user.SignupDate).Last().Id, PropertyTypeId = 1, LocationId = 2, StatusId = 3, Description = "A nice place", LastUpdated = Convert.ToDateTime(DateTime.Now), GuestSharing = true, GuestMax = 4, BedroomNum = 2, BathroomNum = 1 },
+                new Property {ListerId = _db.ApplicationUsers.OrderBy(user => user.SignupDate).First().Id, PropertyTypeId = 5, LocationId = 3, StatusId = 1, Description = "A nice area", LastUpdated = Convert.ToDateTime(DateTime.Now), GuestSharing = false, GuestMax = 8, BedroomNum = 4, BathroomNum = 2 }
             };
 
             foreach (var p in Properties)
@@ -195,9 +195,9 @@ namespace DataAccess
 
             var Bookings = new List<Booking>
             {
-                new Booking { GuestId = _db.ApplicationUsers.Last().Id, PropertyId = 2, Checkin = DateTime.Now.Date, Checkout = DateTime.Now.Date.AddDays(5), Tax = 16.23f, TotalPrice = 133.56f },
-                new Booking { GuestId = _db.ApplicationUsers.Last().Id, PropertyId = 1, Checkin = DateTime.Now.Date, Checkout = DateTime.Now.Date.AddDays(10), Tax = 14.74f, TotalPrice = 56.17f },
-                new Booking { GuestId = _db.ApplicationUsers.First().Id, PropertyId = 0, Checkin = DateTime.Now.Date, Checkout = DateTime.Now.Date.AddDays(2), Tax = 25.98f, TotalPrice = 384.18f }
+                new Booking { GuestId = _db.ApplicationUsers.OrderBy(user => user.SignupDate).Last().Id, PropertyId = 2, Checkin = DateTime.Now.Date, Checkout = DateTime.Now.Date.AddDays(5), Tax = 16.23f, TotalPrice = 133.56f },
+                new Booking { GuestId = _db.ApplicationUsers.OrderBy(user => user.SignupDate).Last().Id, PropertyId = 1, Checkin = DateTime.Now.Date, Checkout = DateTime.Now.Date.AddDays(10), Tax = 14.74f, TotalPrice = 56.17f },
+                new Booking { GuestId = _db.ApplicationUsers.OrderBy(user => user.SignupDate).First().Id, PropertyId = 3, Checkin = DateTime.Now.Date, Checkout = DateTime.Now.Date.AddDays(2), Tax = 25.98f, TotalPrice = 384.18f }
 
             };
 
@@ -235,12 +235,12 @@ namespace DataAccess
 
             var Images = new List<Image>
             {
-                new Image { PropertyId = 0, Url = "https://www.apmutah.com/user/pages/06.areas-we-serve/brigham-city-property-management/brigham%20city%20house.jpeg", IsPrimary = true },
-                new Image { PropertyId = 0, Url = "https://www.beycome.com/blog/wp-content/uploads/2023/11/Prepare-Your-Property-For-Sale-by-owner.jpg", IsPrimary = false },
                 new Image { PropertyId = 1, Url = "https://www.martinhomemanagement.com/images/blog/martin%20property%20management_1.jpg", IsPrimary = true },
                 new Image { PropertyId = 1, Url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUfpa6xo-6HwkTWkoA8wRXOseMC0UaMR6gnw&usqp=CAU", IsPrimary = false },
                 new Image { PropertyId = 2, Url = "https://upload.wikimedia.org/wikipedia/commons/2/26/NRHP_Contributing_property_-Pollack-Krasner_house_11.jpg", IsPrimary = true },
-                new Image { PropertyId = 2, Url = "https://nh.rdcpix.com/91788798c5a894ce12af0654fa248b98e-f1910218106od-w480_h360.jpg", IsPrimary = false }
+                new Image { PropertyId = 2, Url = "https://nh.rdcpix.com/91788798c5a894ce12af0654fa248b98e-f1910218106od-w480_h360.jpg", IsPrimary = false },
+                new Image { PropertyId = 3, Url = "https://www.apmutah.com/user/pages/06.areas-we-serve/brigham-city-property-management/brigham%20city%20house.jpeg", IsPrimary = true },
+                new Image { PropertyId = 3, Url = "https://www.beycome.com/blog/wp-content/uploads/2023/11/Prepare-Your-Property-For-Sale-by-owner.jpg", IsPrimary = false }
             };
 
             foreach (var i in Images)
@@ -264,12 +264,12 @@ namespace DataAccess
 
             var PropertyAmenities = new List<PropertyAmenity>
             {
-                new PropertyAmenity { PropertyId = 0, AmenityId = 0 },
-                new PropertyAmenity { PropertyId = 0, AmenityId = 3 },
                 new PropertyAmenity { PropertyId = 1, AmenityId = 1 },
                 new PropertyAmenity { PropertyId = 1, AmenityId = 2 },
-                new PropertyAmenity { PropertyId = 2, AmenityId = 0 },
-                new PropertyAmenity { PropertyId = 2, AmenityId = 4 }
+                new PropertyAmenity { PropertyId = 2, AmenityId = 5 },
+                new PropertyAmenity { PropertyId = 2, AmenityId = 4 },
+                new PropertyAmenity { PropertyId = 3, AmenityId = 6 },
+                new PropertyAmenity { PropertyId = 3, AmenityId = 3 }
             };
 
             foreach (var p in PropertyAmenities)
@@ -280,14 +280,14 @@ namespace DataAccess
 
             var PropertyBedConfigurations = new List<PropertyBedConfiguration>
             {
-                new PropertyBedConfiguration { PropertyId = 0, BedConfigurationId = 0 },
-                new PropertyBedConfiguration { PropertyId = 0, BedConfigurationId = 1 },
-                new PropertyBedConfiguration { PropertyId = 0, BedConfigurationId = 0 },
-                new PropertyBedConfiguration { PropertyId = 0, BedConfigurationId = 2 },
-                new PropertyBedConfiguration { PropertyId = 1, BedConfigurationId = 0 },
+                new PropertyBedConfiguration { PropertyId = 1, BedConfigurationId = 3 },
                 new PropertyBedConfiguration { PropertyId = 1, BedConfigurationId = 2 },
                 new PropertyBedConfiguration { PropertyId = 2, BedConfigurationId = 1 },
-                new PropertyBedConfiguration { PropertyId = 2, BedConfigurationId = 0 }
+                new PropertyBedConfiguration { PropertyId = 2, BedConfigurationId = 3 },
+                new PropertyBedConfiguration { PropertyId = 3, BedConfigurationId = 3 },
+                new PropertyBedConfiguration { PropertyId = 3, BedConfigurationId = 1 },
+                new PropertyBedConfiguration { PropertyId = 3, BedConfigurationId = 3 },
+                new PropertyBedConfiguration { PropertyId = 3, BedConfigurationId = 2 }
             };
 
             foreach (var p in PropertyBedConfigurations)
@@ -298,9 +298,9 @@ namespace DataAccess
 
             var PropertyDiscounts = new List<PropertyDiscount>
             {
-                new PropertyDiscount { PropertyId = 0, DiscountId = 0 },
-                new PropertyDiscount { PropertyId = 0, DiscountId = 2 },
-                new PropertyDiscount { PropertyId = 2, DiscountId = 1 }
+                new PropertyDiscount { PropertyId = 1, DiscountId = 3 },
+                new PropertyDiscount { PropertyId = 1, DiscountId = 2 },
+                new PropertyDiscount { PropertyId = 3, DiscountId = 1 }
             };
 
             foreach (var p in PropertyDiscounts)
@@ -311,10 +311,10 @@ namespace DataAccess
 
             var PropertyFees = new List<PropertyFee>
             {
-                new PropertyFee { PropertyId = 0, FeeId = 1 },
-                new PropertyFee { PropertyId = 1, FeeId = 0 },
-                new PropertyFee { PropertyId = 2, FeeId = 0 },
-                new PropertyFee { PropertyId = 2, FeeId = 2 }
+                new PropertyFee { PropertyId = 1, FeeId = 3 },
+                new PropertyFee { PropertyId = 2, FeeId = 3 },
+                new PropertyFee { PropertyId = 2, FeeId = 2 },
+                new PropertyFee { PropertyId = 3, FeeId = 1 }
             };
 
             foreach (var p in PropertyFees)
@@ -325,9 +325,9 @@ namespace DataAccess
 
             var PropertyNightlyPrices = new List<PropertyNightlyPrice>
             {
-                new PropertyNightlyPrice { PropertyId = 0, PriceRangeId = 0, Rate = 45.50f },
                 new PropertyNightlyPrice { PropertyId = 1, PriceRangeId = 1, Rate = 23.29f },
-                new PropertyNightlyPrice { PropertyId = 2, PriceRangeId = 2, Rate = 103.64f }
+                new PropertyNightlyPrice { PropertyId = 2, PriceRangeId = 2, Rate = 103.64f },
+                new PropertyNightlyPrice { PropertyId = 3, PriceRangeId = 3, Rate = 45.50f }
             };
 
             foreach (var p in PropertyNightlyPrices)
@@ -338,9 +338,9 @@ namespace DataAccess
 
             var Reviews = new List<Review>
             {
-                new Review { BookingId = 0, Rating = 7, Comment = "Good experience", Timestamp = DateTime.Now, ReviewType = 0 },
-                new Review { BookingId = 0, Rating = 10, Comment = "Great guests", Timestamp = DateTime.Now.AddHours(-2), ReviewType = 1},
-                new Review { BookingId = 2, Rating = 2, Comment = "Rats", Timestamp = DateTime.Now.AddMonths(-3), ReviewType = 0 }
+                new Review { BookingId = 1, Rating = 7, Comment = "Good experience", Timestamp = DateTime.Now, ReviewType = 0 },
+                new Review { BookingId = 1, Rating = 10, Comment = "Great guests", Timestamp = DateTime.Now.AddHours(-2), ReviewType = 1},
+                new Review { BookingId = 3, Rating = 2, Comment = "Rats", Timestamp = DateTime.Now.AddMonths(-3), ReviewType = 0 }
             };
 
             foreach (var r in Reviews)
