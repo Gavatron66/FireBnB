@@ -281,7 +281,11 @@
                     </div>
                 </div>
             </div>
-            @if (Model.objBooking.Checkout < DateTime.Now && Model.UserId == Model.objBooking.GuestId)
+
+            @* check for user & their bookings from bookings, and cross reference with datetime checkout date,
+            cross reference property id 
+             *@
+            @if ((Model.objBooking.Checkout < DateTime.Now) && (Model.objBooking.GuestId == Model.UserId))
             {
                 <form method="post" class="row">
                     <div id="CreatingReview" class="col-auto">

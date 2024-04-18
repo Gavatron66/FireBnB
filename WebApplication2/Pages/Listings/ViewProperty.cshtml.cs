@@ -237,6 +237,8 @@ namespace FireBnBWeb.Pages.Listings
 
         //FROM REVIEW
         public string UserId => _userManager.GetUserId(User);
+        public ApplicationUser AppUser { get; set; }
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -245,7 +247,7 @@ namespace FireBnBWeb.Pages.Listings
                 return Page();
             }
 
-            /* FOR COMMIT */
+            /* FOR REVIEW COMMIT */
             //associate Review.BookingId to Booking.Booking.Id
             objUserReview.BookingId = objBooking.Id;
             // Associate Booking.PropertyId to Property.Id

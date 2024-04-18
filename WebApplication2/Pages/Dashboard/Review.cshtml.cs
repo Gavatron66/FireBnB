@@ -140,7 +140,7 @@ namespace FireBnBWeb.Pages.Dashboard
             
             // Retrieve all properties along with their related locations, cities, counties, and states
             objProperties = _unitofWork.GetAllWithLocationsCitiesCountiesStates();
-            
+                //((Model.objBooking.Checkout < DateTime.Now) && (Model.objBooking.GuestId == Model.UserId))
 
             if (!string.IsNullOrEmpty(SearchQuery) || CheckIn.HasValue || CheckOut.HasValue || GuestNumber.HasValue || CostPerNight.HasValue || SelectedAmenities?.Any() == true || BedroomCount.HasValue || BathroomCount.HasValue)
             {
